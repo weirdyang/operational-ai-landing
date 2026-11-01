@@ -121,8 +121,8 @@
     .audience-section .card h3 { color: white; }
     .audience-section .card-icon { background: rgba(225,29,72,.16); color: #ff8fa7; }
     .outcomes-section { background: white; }
-    .outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .outcome { display: flex; gap: 16px; padding: 23px; border: 1px solid var(--line); border-radius: 15px; }
+    .outcome-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+    .outcome { display: flex; flex-direction: column; align-items: flex-start; gap: 17px; padding: 24px; min-width: 0; border: 1px solid var(--line); border-radius: 15px; }
     .outcome-mark { flex: 0 0 30px; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; color: var(--red); background: var(--soft-red); font-weight: 900; }
     .outcome-mark.metric { flex-basis: 66px; width: 66px; height: 48px; border-radius: 10px; font-size: 1.18rem; letter-spacing: -.04em; }
     .outcome h3 { margin: 1px 0 5px; font-size: .98rem; }
@@ -143,12 +143,12 @@
     .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
     .footer-brand { color: white; font-weight: 800; letter-spacing: -.03em; }
     @media (max-width: 900px) {
-      .hero-grid { gap: 35px; }
+      .hero-grid { gap: 35px; }\n      .outcome-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .solution-layout { gap: 35px; }
       .cta-panel { gap: 35px; padding: 38px; }
       .floating-note { right: -8px; }
     }
-    @media (max-width: 700px) {
+    @media (max-width: 800px) {
       .wrap { width: min(100% - 36px, 540px); }
       .nav { height: 66px; }
       .menu-toggle { display: block; }
@@ -164,7 +164,7 @@
       .trust-inner { flex-wrap: wrap; justify-content: flex-start; gap: 12px 24px; }
       .trust-label { width: 100%; }
       section.content-section { padding: 72px 0; }
-      .cards { grid-template-columns: 1fr; }
+      .cards { grid-template-columns: 1fr; }\n      .outcome-grid { grid-template-columns: 1fr; }
       .solution-layout { grid-template-columns: 1fr; }
       .solution-intro { position: static; }
       .outcome-grid { grid-template-columns: 1fr; }
@@ -281,7 +281,12 @@
         <div class="cards">
           <article class="card"><div class="card-icon">▦</div><h3>Precision engineering & manufacturing</h3><p>Job tracking, vendor portals, quality documentation and shop-floor data that need to flow through one operational system.</p></article>
           <article class="card"><div class="card-icon">⇄</div><h3>Logistics & industrial supply chains</h3><p>Order visibility, compliance documentation and multi-party workflows that standard tools cannot handle cleanly.</p></article>
-          <article class="card"><div class="card-icon">◫</div><h3>B2B professional services</h3><p>Knowledge bases, structure<section class="content-section outcomes-section">
+          <article class="card"><div class="card-icon">◫</div><h3>B2B professional services</h3><p>Knowledge bases, structured client workflows and document-heavy processes that benefit from better-connected systems.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section outcomes-section" id="outcomes">
       <div class="wrap">
         <div class="section-head">
           <div class="eyebrow">What changes</div>
