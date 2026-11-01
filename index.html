@@ -3,184 +3,350 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Aperture — Open your operations to AI</title>
+  <meta name="theme-color" content="#f7f5f2" />
+  <meta name="description" content="Aperture helps Singapore manufacturers, logistics providers and B2B firms modernise operational systems and build a practical foundation for AI." />
+  <title>Aperture — Make your operations ready for AI</title>
   <style>
     :root {
       --red: #e11d48;
       --red-dark: #be123c;
-      --white: #ffffff;
-      --offwhite: #fafafa;
-      --border: #e5e5e5;
-      --text: #222;
-      --muted: #666;
+      --ink: #211f20;
+      --muted: #6e6868;
+      --paper: #f7f5f2;
+      --white: #fff;
+      --line: #e8e2df;
+      --soft-red: #fff0f2;
+      --dark: #242022;
+      --radius: 18px;
+      --shadow: 0 24px 70px rgba(38, 27, 29, .10);
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; color: var(--text); line-height: 1.55; background: var(--white); }
-    .container { max-width: 960px; margin: 0 auto; padding: 0 20px; }
-    header { background: var(--white); border-bottom: 1px solid var(--border); padding: 1rem 0; position: sticky; top: 0; z-index: 10; }
-    header .container { display: flex; justify-content: space-between; align-items: center; }
-    .logo { font-weight: 700; font-size: 1.35rem; color: var(--red); letter-spacing: -0.3px; }
-    nav a { color: var(--text); text-decoration: none; margin-left: 1.4rem; font-size: 0.95rem; }
-    nav a:hover { color: var(--red); }
-    .hero { background: var(--white); padding: 4.5rem 0 3.5rem; text-align: center; border-bottom: 1px solid var(--border); }
-    .hero .tagline { color: var(--red); font-size: 0.95rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.6rem; }
-    .hero h1 { font-size: 2.4rem; margin-bottom: 1rem; line-height: 1.25; font-weight: 700; }
-    .hero p { font-size: 1.15rem; max-width: 640px; margin: 0 auto 1.8rem; color: var(--muted); }
-    .btn { display: inline-block; background: var(--red); color: var(--white); padding: 0.75rem 1.6rem; border-radius: 4px; text-decoration: none; font-weight: 600; font-size: 0.95rem; border: 1px solid var(--red); }
-    .btn:hover { background: var(--red-dark); border-color: var(--red-dark); }
-    .btn-outline { background: transparent; color: var(--red); border: 1px solid var(--red); margin-left: 0.8rem; }
-    .btn-outline:hover { background: var(--offwhite); }
-    section { padding: 3.5rem 0; }
-    section:nth-child(even) { background: var(--offwhite); }
-    h2 { text-align: center; font-size: 1.75rem; margin-bottom: 2rem; font-weight: 700; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.2rem; }
-    .card { background: var(--white); padding: 1.4rem; border: 1px solid var(--border); border-radius: 4px; }
-    .card h3 { margin-bottom: 0.5rem; color: var(--red); font-size: 1.05rem; font-weight: 600; }
-    .card p { color: var(--muted); font-size: 0.95rem; }
-    .cta-band { background: var(--offwhite); text-align: center; padding: 3.5rem 0; border-top: 1px solid var(--border); }
-    .cta-band h2 { margin-bottom: 0.6rem; }
-    .cta-band > .container > p { max-width: 560px; margin: 0 auto 1.5rem; color: var(--muted); }
-    form { max-width: 460px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.7rem; }
-    input, textarea, select { padding: 0.7rem 0.8rem; border: 1px solid var(--border); border-radius: 4px; font-size: 0.95rem; font-family: inherit; background: var(--white); }
-    input:focus, textarea:focus, select:focus { outline: none; border-color: var(--red); }
-    button.btn { border: none; cursor: pointer; }
-    footer { background: var(--white); border-top: 1px solid var(--border); color: var(--muted); text-align: center; padding: 1.5rem 0; font-size: 0.85rem; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1160px, calc(100% - 48px)); margin: 0 auto; }
+    .site-header {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(247,245,242,.88);
+      border-bottom: 1px solid rgba(232,226,223,.8);
+      backdrop-filter: blur(16px);
+    }
+    .nav { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-size: 1.12rem; font-weight: 800; letter-spacing: -.045em; }
+    .brand-mark { display: grid; place-items: center; width: 31px; height: 31px; border-radius: 10px; color: white; background: var(--red); font-size: 17px; font-weight: 800; }
+    .nav-links { display: flex; align-items: center; gap: 30px; }
+    .nav-links a { text-decoration: none; color: #625c5d; font-size: .9rem; font-weight: 600; transition: color .2s; }
+    .nav-links a:hover { color: var(--red); }
+    .nav-links .nav-cta { color: white; background: var(--red); padding: 11px 17px; border-radius: 999px; }
+    .nav-links .nav-cta:hover { color: white; background: var(--red-dark); }
+    .menu-toggle { display: none; border: 0; background: transparent; color: var(--ink); font: inherit; font-size: 1.5rem; }
+    .hero { padding: 88px 0 86px; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; align-items: center; gap: 64px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--red-dark); font-size: .75rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; width: 22px; height: 2px; background: var(--red); }
+    h1 { max-width: 650px; margin: 22px 0 22px; font-size: clamp(3rem, 5.3vw, 5.15rem); line-height: .99; letter-spacing: -.075em; font-weight: 780; }
+    h1 em { color: var(--red); font-style: normal; }
+    .hero-copy { max-width: 560px; color: var(--muted); font-size: 1.12rem; line-height: 1.8; }
+    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 31px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: 0 21px; border: 1px solid var(--red); border-radius: 999px; background: var(--red); color: white; text-decoration: none; font-size: .91rem; font-weight: 750; transition: transform .2s, background .2s, box-shadow .2s; }
+    .button:hover { transform: translateY(-2px); background: var(--red-dark); box-shadow: 0 10px 24px rgba(225,29,72,.2); }
+    .button.secondary { color: var(--ink); background: transparent; border-color: #d9d0cc; }
+    .button.secondary:hover { color: var(--red); border-color: var(--red); background: white; box-shadow: none; }
+    .hero-note { margin-top: 20px; color: #898181; font-size: .82rem; }
+    .visual-wrap { position: relative; min-width: 0; }
+    .visual-glow { position: absolute; inset: 7% -9% 2% 9%; border-radius: 50%; background: radial-gradient(ellipse, rgba(225,29,72,.13), transparent 68%); filter: blur(12px); }
+    .dashboard { position: relative; padding: 18px; border: 1px solid rgba(255,255,255,.85); border-radius: 23px; background: rgba(255,255,255,.88); box-shadow: var(--shadow); transform: rotate(1.2deg); }
+    .dash-top { display: flex; align-items: center; justify-content: space-between; padding: 3px 3px 17px; border-bottom: 1px solid #eee9e6; }
+    .dash-title { font-size: .82rem; font-weight: 800; letter-spacing: -.02em; }
+    .dash-status { display: inline-flex; align-items: center; gap: 6px; color: #43866a; font-size: .68rem; font-weight: 750; }
+    .dash-status::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #5db486; }
+    .dash-label { margin: 18px 0 9px; color: #9a9290; font-size: .63rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+    .workflow { display: grid; grid-template-columns: 1fr 26px 1fr 26px 1fr; align-items: center; gap: 5px; }
+    .workflow-step { min-height: 93px; display: flex; flex-direction: column; justify-content: space-between; padding: 12px 10px; border: 1px solid #eee8e5; border-radius: 12px; background: #fff; }
+    .step-icon { display: grid; place-items: center; width: 27px; height: 27px; border-radius: 8px; color: var(--red); background: var(--soft-red); font-size: .82rem; font-weight: 800; }
+    .step-name { font-size: .67rem; font-weight: 800; line-height: 1.3; }
+    .step-sub { color: #928987; font-size: .58rem; }
+    .flow-arrow { color: #c8bfbb; text-align: center; font-size: 1rem; }
+    .dash-bottom { display: grid; grid-template-columns: 1.2fr .8fr; gap: 11px; margin-top: 13px; }
+    .mini-panel { padding: 13px; border-radius: 12px; background: #f8f6f4; }
+    .mini-title { color: #89817f; font-size: .62rem; font-weight: 750; }
+    .mini-value { margin-top: 4px; font-size: 1.12rem; font-weight: 800; letter-spacing: -.05em; }
+    .mini-bars { height: 29px; display: flex; align-items: end; gap: 4px; margin-top: 7px; }
+    .mini-bars i { flex: 1; border-radius: 3px 3px 0 0; background: #f3a1b2; }
+    .mini-bars i:nth-child(1) { height: 35%; }.mini-bars i:nth-child(2) { height: 58%; }.mini-bars i:nth-child(3) { height: 43%; }.mini-bars i:nth-child(4) { height: 82%; }.mini-bars i:nth-child(5) { height: 67%; }.mini-bars i:nth-child(6) { height: 100%; background: var(--red); }
+    .doc-row { display: flex; align-items: center; gap: 8px; margin-top: 9px; }
+    .doc-icon { display: grid; place-items: center; width: 25px; height: 29px; border-radius: 6px; color: var(--red); background: white; font-size: .57rem; font-weight: 900; }
+    .doc-lines { flex: 1; }.doc-lines::before,.doc-lines::after { content: ""; display: block; height: 4px; border-radius: 4px; background: #ddd5d1; }.doc-lines::after { width: 65%; margin-top: 5px; background: #ebe5e2; }
+    .floating-note { position: absolute; right: -25px; bottom: 27px; display: flex; align-items: center; gap: 10px; padding: 12px 15px; border: 1px solid #f0e9e6; border-radius: 13px; background: white; box-shadow: 0 12px 34px rgba(38,27,29,.12); font-size: .72rem; font-weight: 750; }
+    .floating-check { display: grid; place-items: center; width: 25px; height: 25px; border-radius: 50%; color: #39805f; background: #eaf6ef; }
+    .trust-strip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.48); }
+    .trust-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 22px 0; }
+    .trust-label { color: #918987; font-size: .72rem; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
+    .trust-item { color: #554e4e; font-size: .86rem; font-weight: 750; }
+    section.content-section { padding: 100px 0; }
+    .section-head { max-width: 690px; margin: 0 auto 48px; text-align: center; }
+    .section-head .eyebrow { justify-content: center; }
+    h2 { margin: 15px 0 13px; font-size: clamp(2rem, 3.6vw, 3.25rem); line-height: 1.08; letter-spacing: -.06em; }
+    .section-head p { margin: 0; color: var(--muted); font-size: 1rem; }
+    .problem-section { background: white; }
+    .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 17px; }
+    .card { padding: 27px; border: 1px solid var(--line); border-radius: var(--radius); background: white; transition: transform .2s, box-shadow .2s, border-color .2s; }
+    .card:hover { transform: translateY(-4px); border-color: #edc4cd; box-shadow: 0 18px 38px rgba(38,27,29,.06); }
+    .card-icon { display: grid; place-items: center; width: 43px; height: 43px; margin-bottom: 23px; border-radius: 13px; color: var(--red); background: var(--soft-red); font-size: 1rem; font-weight: 850; }
+    .card h3 { margin: 0 0 9px; font-size: 1.05rem; letter-spacing: -.025em; }
+    .card p { margin: 0; color: var(--muted); font-size: .91rem; line-height: 1.75; }
+    .solution-section { background: var(--paper); }
+    .solution-layout { display: grid; grid-template-columns: .8fr 1.2fr; gap: 75px; align-items: start; }
+    .solution-intro { position: sticky; top: 120px; }
+    .solution-intro h2 { font-size: clamp(2.2rem, 4vw, 3.6rem); }
+    .solution-intro p { color: var(--muted); }
+    .text-link { display: inline-flex; gap: 8px; align-items: center; margin-top: 15px; color: var(--red-dark); font-size: .9rem; font-weight: 800; text-decoration: none; }
+    .solution-list { display: grid; gap: 12px; }
+    .solution-row { display: grid; grid-template-columns: 54px 1fr; gap: 17px; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: white; }
+    .solution-number { color: #e7a0af; font-size: .9rem; font-weight: 850; }
+    .solution-row h3 { margin: 0 0 6px; font-size: 1.02rem; }
+    .solution-row p { margin: 0; color: var(--muted); font-size: .89rem; }
+    .audience-section { background: var(--dark); color: white; }
+    .audience-section .section-head p { color: #b9afb1; }
+    .audience-section .eyebrow { color: #ff9aaf; }
+    .audience-section .card { border-color: #494044; background: #302a2d; }
+    .audience-section .card p { color: #c1b8ba; }
+    .audience-section .card h3 { color: white; }
+    .audience-section .card-icon { background: rgba(225,29,72,.16); color: #ff8fa7; }
+    .outcomes-section { background: white; }
+    .outcome-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .outcome { display: flex; gap: 16px; padding: 23px; border: 1px solid var(--line); border-radius: 15px; }
+    .outcome-mark { flex: 0 0 30px; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; color: var(--red); background: var(--soft-red); font-weight: 900; }
+    .outcome h3 { margin: 1px 0 5px; font-size: .98rem; }
+    .outcome p { margin: 0; color: var(--muted); font-size: .87rem; }
+    .cta-section { padding: 90px 0; background: var(--soft-red); }
+    .cta-panel { display: grid; grid-template-columns: .9fr 1.1fr; gap: 65px; align-items: start; padding: 54px; border: 1px solid rgba(225,29,72,.12); border-radius: 24px; background: white; box-shadow: 0 18px 55px rgba(108,30,49,.06); }
+    .cta-copy h2 { margin-top: 15px; font-size: clamp(2.1rem, 3.6vw, 3.3rem); }
+    .cta-copy p { color: var(--muted); }
+    .cta-promise { margin-top: 27px; padding-top: 19px; border-top: 1px solid var(--line); color: #827978; font-size: .82rem; }
+    form { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    input, select, textarea { width: 100%; min-height: 49px; padding: 12px 14px; border: 1px solid #e5ddda; border-radius: 10px; outline: none; background: #fcfbfa; color: var(--ink); font: inherit; font-size: .88rem; transition: border-color .2s, box-shadow .2s; }
+    input:focus, select:focus, textarea:focus { border-color: var(--red); box-shadow: 0 0 0 3px rgba(225,29,72,.09); }
+    textarea { min-height: 100px; resize: vertical; grid-column: 1 / -1; }
+    select { color: #71696a; }
+    form button { grid-column: 1 / -1; cursor: pointer; font: inherit; }
+    .form-note { grid-column: 1 / -1; margin: 0; color: #918987; font-size: .75rem; }
+    footer { padding: 27px 0; background: var(--dark); color: #b9afb1; font-size: .82rem; }
+    .footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .footer-brand { color: white; font-weight: 800; letter-spacing: -.03em; }
+    @media (max-width: 900px) {
+      .hero-grid { gap: 35px; }
+      .solution-layout { gap: 35px; }
+      .cta-panel { gap: 35px; padding: 38px; }
+      .floating-note { right: -8px; }
+    }
     @media (max-width: 700px) {
-      .hero h1 { font-size: 1.85rem; }
-      .btn-outline { margin-left: 0; margin-top: 0.6rem; display: inline-block; }
-      nav a { margin-left: 0.8rem; }
+      .wrap { width: min(100% - 36px, 540px); }
+      .nav { height: 66px; }
+      .menu-toggle { display: block; }
+      .nav-links { display: none; position: absolute; top: 65px; left: 0; right: 0; padding: 18px 24px 22px; border-bottom: 1px solid var(--line); background: var(--paper); flex-direction: column; align-items: stretch; gap: 17px; }
+      .nav-links.open { display: flex; }
+      .nav-links .nav-cta { text-align: center; }
+      .hero { padding: 63px 0 60px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 45px; }
+      h1 { font-size: clamp(3rem, 13vw, 4.5rem); }
+      .hero-copy { font-size: 1rem; }
+      .dashboard { padding: 13px; }
+      .floating-note { right: -5px; bottom: -18px; }
+      .trust-inner { flex-wrap: wrap; justify-content: flex-start; gap: 12px 24px; }
+      .trust-label { width: 100%; }
+      section.content-section { padding: 72px 0; }
+      .cards { grid-template-columns: 1fr; }
+      .solution-layout { grid-template-columns: 1fr; }
+      .solution-intro { position: static; }
+      .outcome-grid { grid-template-columns: 1fr; }
+      .cta-section { padding: 60px 0; }
+      .cta-panel { grid-template-columns: 1fr; gap: 28px; padding: 27px 21px; }
+      form { grid-template-columns: 1fr; }
+      textarea, form button, .form-note { grid-column: auto; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <div class="logo">Aperture</div>
-      <nav>
-        <a href="#problem">Problem</a>
-        <a href="#solution">Solution</a>
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="#" aria-label="Aperture home"><span class="brand-mark">A</span> Aperture</a>
+      <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#problem">The challenge</a>
+        <a href="#solution">Our approach</a>
         <a href="#who">Who it's for</a>
-        <a href="#cta">Get Started</a>
+        <a class="nav-cta" href="#contact">Talk to us <span aria-hidden="true">↗</span></a>
       </nav>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="container">
-      <div class="tagline">Open your operations to AI</div>
-      <h1>Turn legacy operational systems into AI-ready modular platforms</h1>
-      <p>For Singapore mid-market manufacturers, logistics providers, and B2B firms stuck with siloed tools, manual document handling, and systems that can't support AI.</p>
-      <a href="#cta" class="btn">Book a Free Operational Assessment</a>
-      <a href="#solution" class="btn btn-outline">See how it works</a>
-    </div>
-  </section>
-
-  <section id="problem">
-    <div class="container">
-      <h2>The real blocker to AI isn't the models</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Fragmented data & silos</h3>
-          <p>Job orders, vendor portals, compliance docs, and internal tools live in separate desktop apps or old databases. AI can't see or act on them.</p>
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Operational systems, made ready for AI</div>
+          <h1>Your operations have a lot to tell <em>AI.</em></h1>
+          <p class="hero-copy">But first, your systems need to speak the same language. Aperture helps Singapore manufacturers, logistics providers and B2B firms connect fragmented workflows, modernise the operational layer, and create a practical foundation for AI.</p>
+          <div class="hero-actions">
+            <a class="button" href="#contact">Book an operational assessment <span aria-hidden="true">&nbsp;↗</span></a>
+            <a class="button secondary" href="#solution">Explore the approach</a>
+          </div>
+          <p class="hero-note">Start with one workflow. Build from what already works.</p>
         </div>
-        <div class="card">
-          <h3>Manual document work</h3>
-          <p>Teams still parse supplier quotes, POs, and certificates by hand. This consumes time and creates errors that AI agents could eliminate.</p>
-        </div>
-        <div class="card">
-          <h3>Systems that don't scale</h3>
-          <p>Off-the-shelf SaaS or WordPress sites can't handle custom business rules, multi-party access, or clean APIs. Full custom rebuilds are too expensive.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="solution">
-    <div class="container">
-      <h2>Modernize the platform first, then layer AI</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Modular operational portals</h3>
-          <p>Replace fragmented tools with a secure, role-based portal that handles workflows, multi-tenant access, and structured data — built to last and easy to extend.</p>
-        </div>
-        <div class="card">
-          <h3>Clean APIs for AI</h3>
-          <p>Expose business logic and data so you can add document processing, RAG knowledge bases, or workflow agents without rebuilding everything.</p>
-        </div>
-        <div class="card">
-          <h3>Enterprise architecture, mid-market cost</h3>
-          <p>Get maintainable .NET modularity and security without Sitecore-level overhead or the risk of pure custom code. Ideal for grant-supported transformation projects.</p>
+        <div class="visual-wrap" aria-label="Illustration of connected operational workflows">
+          <div class="visual-glow"></div>
+          <div class="dashboard">
+            <div class="dash-top"><span class="dash-title">Operations overview</span><span class="dash-status">Systems connected</span></div>
+            <div class="dash-label">One connected workflow</div>
+            <div class="workflow">
+              <div class="workflow-step"><span class="step-icon">01</span><span class="step-name">Business systems</span><span class="step-sub">Orders · ERP · CRM</span></div>
+              <div class="flow-arrow">→</div>
+              <div class="workflow-step"><span class="step-icon">02</span><span class="step-name">Shared platform</span><span class="step-sub">Data · Rules · APIs</span></div>
+              <div class="flow-arrow">→</div>
+              <div class="workflow-step"><span class="step-icon">03</span><span class="step-name">AI capabilities</span><span class="step-sub">Documents · Agents</span></div>
+            </div>
+            <div class="dash-bottom">
+              <div class="mini-panel"><div class="mini-title">Workflow visibility</div><div class="mini-value">End to end</div><div class="mini-bars"><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+              <div class="mini-panel"><div class="mini-title">Document intake</div><div class="doc-row"><span class="doc-icon">PDF</span><span class="doc-lines"></span></div><div class="doc-row"><span class="doc-icon">PO</span><span class="doc-lines"></span></div></div>
+            </div>
+          </div>
+          <div class="floating-note"><span class="floating-check">✓</span><span>Built around your real workflows</span></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="who">
-    <div class="container">
-      <h2>Built for companies that have outgrown basic SaaS</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Precision Engineering & Manufacturing</h3>
-          <p>Job tracking, vendor portals, quality docs, and shop-floor data that need to flow into one operational system.</p>
-        </div>
-        <div class="card">
-          <h3>Logistics & Industrial Supply Chains</h3>
-          <p>Order visibility, compliance documentation, and multi-party workflows that standard tools can't handle cleanly.</p>
-        </div>
-        <div class="card">
-          <h3>B2B Professional Services & Agencies</h3>
-          <p>Internal knowledge bases, structured content, and secure client or partner portals with clear authorization boundaries.</p>
-        </div>
+    <div class="trust-strip">
+      <div class="wrap trust-inner">
+        <span class="trust-label">Designed for complex operations</span>
+        <span class="trust-item">Manufacturing</span>
+        <span class="trust-item">Logistics & supply chain</span>
+        <span class="trust-item">B2B services</span>
+        <span class="trust-item">Singapore SMEs</span>
       </div>
     </div>
-  </section>
 
-  <section class="outcomes">
-    <div class="container">
-      <h2>Typical outcomes</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>60%+ less manual document handling</h3>
-          <p>Automated parsing of quotes, POs, certificates, and forms so staff focus on exceptions and higher-value work.</p>
+    <section class="content-section problem-section" id="problem">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">The real bottleneck</div>
+          <h2>AI isn't the hard part.<br />Your operational plumbing is.</h2>
+          <p>Useful AI depends on reliable access to the systems, information and business rules that keep work moving.</p>
         </div>
-        <div class="card">
-          <h3>AI-ready foundation</h3>
-          <p>Clean APIs and structured data that let you add agents or RAG without starting from scratch later.</p>
-        </div>
-        <div class="card">
-          <h3>Lower long-term cost & risk</h3>
-          <p>Modular, maintainable platform that grows with you — and projects that can be framed for EDGE / digital transformation grant support.</p>
+        <div class="cards">
+          <article class="card"><div class="card-icon">↗</div><h3>Information is scattered</h3><p>Job orders, vendor portals, compliance documents and internal tools sit in separate apps and databases. People bridge the gaps manually.</p></article>
+          <article class="card"><div class="card-icon">▤</div><h3>Routine work stays manual</h3><p>Teams still process supplier quotes, purchase orders and certificates by hand, leaving less time for exceptions and decisions.</p></article>
+          <article class="card"><div class="card-icon">⌘</div><h3>Existing systems are hard to extend</h3><p>Basic SaaS tools can struggle with custom rules, multi-party access and integration. A full rebuild can be costly and disruptive.</p></article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="cta" class="cta-band">
-    <div class="container">
-      <h2>Is this a fit for your operations?</h2>
-      <p>Book a short free assessment. We'll map one operational workflow, estimate automation potential, and outline a modular path (including grant framing if relevant).</p>
-      <form action="https://formspree.io/f/xgaanzjz" method="POST">
-        <input type="text" name="name" placeholder="Your name" required />
-        <input type="email" name="email" placeholder="Work email" required />
-        <input type="text" name="company" placeholder="Company name" required />
-        <select name="industry" required>
-          <option value="">Industry</option>
-          <option>Precision Engineering / Manufacturing</option>
-          <option>Logistics / Supply Chain</option>
-          <option>B2B Professional Services</option>
-          <option>Other industrial / B2B</option>
-        </select>
-        <textarea name="challenge" rows="3" placeholder="Biggest operational or document pain point right now?"></textarea>
-        <button type="submit" class="btn">Request Free Assessment</button>
-      </form>
-      <p style="margin-top: 1.2rem; font-size: 0.85rem;">No sales pitch. Just a clear look at whether a modular AI-ready platform makes sense for you.</p>
-    </div>
-  </section>
+    <section class="content-section solution-section" id="solution">
+      <div class="wrap solution-layout">
+        <div class="solution-intro">
+          <div class="eyebrow">A practical path forward</div>
+          <h2>Modernise the foundation. Then add AI where it matters.</h2>
+          <p>Keep the parts of your operation that work. Connect the gaps, make the rules explicit, and create a platform that can evolve with the business.</p>
+          <a class="text-link" href="#contact">Discuss your workflow <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="solution-list">
+          <article class="solution-row"><span class="solution-number">01 /</span><div><h3>Bring workflows into one operational portal</h3><p>Replace disconnected touchpoints with secure, role-based experiences for staff, customers, suppliers and partners.</p></div></article>
+          <article class="solution-row"><span class="solution-number">02 /</span><div><h3>Make data and business logic accessible</h3><p>Structure the information and expose clean APIs, so systems and future AI tools can work with consistent, governed data.</p></div></article>
+          <article class="solution-row"><span class="solution-number">03 /</span><div><h3>Introduce AI against real business tasks</h3><p>Add document processing, knowledge retrieval and workflow agents where they solve a defined problem, with people in control of important decisions.</p></div></article>
+          <article class="solution-row"><span class="solution-number">04 /</span><div><h3>Build for change, not a one-off project</h3><p>Use a modular .NET foundation that can be extended over time, without taking on unnecessary enterprise-platform overhead.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section audience-section" id="who">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Who we work with</div>
+          <h2>For businesses that have outgrown basic SaaS.</h2>
+          <p>Especially where work crosses teams, companies, documents and legacy systems.</p>
+        </div>
+        <div class="cards">
+          <article class="card"><div class="card-icon">▦</div><h3>Precision engineering & manufacturing</h3><p>Job tracking, vendor portals, quality documentation and shop-floor data that need to flow through one operational system.</p></article>
+          <article class="card"><div class="card-icon">⇄</div><h3>Logistics & industrial supply chains</h3><p>Order visibility, compliance documentation and multi-party workflows that standard tools cannot handle cleanly.</p></article>
+          <article class="card"><div class="card-icon">◫</div><h3>B2B professional services</h3><p>Knowledge bases, structured content and secure client or partner portals with clear access boundaries.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section outcomes-section">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">What changes</div>
+          <h2>A better operating base for the next stage.</h2>
+          <p>The goal is not AI for its own sake. It is less friction in the work your business already does.</p>
+        </div>
+        <div class="outcome-grid">
+          <article class="outcome"><span class="outcome-mark">✓</span><div><h3>Less repetitive document handling</h3><p>Automate the first pass on quotes, POs, certificates and forms, while keeping exceptions visible to your team.</p></div></article>
+          <article class="outcome"><span class="outcome-mark">✓</span><div><h3>Connected operational information</h3><p>Give teams a clearer view across workflows instead of relying on manual hand-offs and duplicate records.</p></div></article>
+          <article class="outcome"><span class="outcome-mark">✓</span><div><h3>A foundation for practical AI</h3><p>Make it possible to add agents and knowledge tools without starting the architecture from scratch.</p></div></article>
+          <article class="outcome"><span class="outcome-mark">✓</span><div><h3>Lower long-term complexity</h3><p>Extend a maintainable platform incrementally, with a path that can be assessed against relevant transformation support.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section" id="contact">
+      <div class="wrap">
+        <div class="cta-panel">
+          <div class="cta-copy">
+            <div class="eyebrow">Start with a conversation</div>
+            <h2>Which workflow is slowing your business down?</h2>
+            <p>Tell us where work gets stuck. We can map one operational workflow, identify practical automation opportunities and outline a modular path forward.</p>
+            <div class="cta-promise">A focused first conversation. No obligation to commit to a rebuild or an AI project.</div>
+          </div>
+          <form action="https://formspree.io/f/xgaanzjz" method="POST">
+            <input type="text" name="name" placeholder="Your name" aria-label="Your name" required />
+            <input type="email" name="email" placeholder="Work email" aria-label="Work email" required />
+            <input type="text" name="company" placeholder="Company name" aria-label="Company name" required />
+            <select name="industry" aria-label="Industry" required>
+              <option value="">Select your industry</option>
+              <option>Precision Engineering / Manufacturing</option>
+              <option>Logistics / Supply Chain</option>
+              <option>B2B Professional Services</option>
+              <option>Other industrial / B2B</option>
+            </select>
+            <textarea name="challenge" rows="3" placeholder="What's one operational or document process you'd like to improve?" aria-label="Your operational challenge"></textarea>
+            <button type="submit" class="button">Request a conversation <span aria-hidden="true">&nbsp;↗</span></button>
+            <p class="form-note">Your details will only be used to respond to this enquiry.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer>
-    <div class="container">
-      <p>Aperture · aperture.wdym.fyi · Singapore · Mid-market industrial & B2B SMEs</p>
+    <div class="wrap footer-inner">
+      <span class="footer-brand">Aperture</span>
+      <span>aperture.wdym.fyi · Singapore · Operational platforms for industrial & B2B businesses</span>
     </div>
   </footer>
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+    });
+    nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }));
+  </script>
 </body>
 </html>
